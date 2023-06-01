@@ -1,5 +1,6 @@
 import sys
 import random
+import string
 
 source_text = './Code/Text/FrankensteinExtract.txt'
 
@@ -8,6 +9,8 @@ def histogram(source_text):
     with open(source_text, 'r') as f:
         frankenstein = f.read()
         frankenstein = frankenstein.split()
+        # remove all punctuation and put all words in lowercase using translate and maketrans
+        frankenstein = [word.translate(str.maketrans('', '', string.punctuation)).lower() for word in frankenstein]
         f.close()
         histogram = {}
         for word in frankenstein:
