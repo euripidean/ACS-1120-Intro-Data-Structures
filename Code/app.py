@@ -11,7 +11,7 @@ app = Flask(__name__)
 def home():
     """Route that returns a web page containing the generated text."""
     sentence = weighted_sample()
-    return render_template("index.html", sentence=sentence)
+    return render_template("./Views/index.html", sentence=sentence)
     
 
 
