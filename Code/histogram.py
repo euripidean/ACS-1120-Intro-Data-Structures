@@ -2,7 +2,7 @@ import sys
 import random
 import string
 
-source_text = './Code/Text/FrankensteinExtract.txt'
+source_text = './Text/FrankensteinExtract.txt'
 
 # Read Frankenstein from the file and put into dictionary, counting the number of times each word appears
 def histogram(source_text):

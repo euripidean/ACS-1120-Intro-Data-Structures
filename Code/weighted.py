@@ -1,7 +1,7 @@
 from histogram import histogram
 import random
 
-source_text = './Code/Text/FrankensteinExtract.txt'
+source_text = './Text/FrankensteinExtract.txt'
 
 def weighted_sample():
     words = histogram(source_text)
