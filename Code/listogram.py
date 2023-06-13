@@ -18,27 +18,52 @@ class Listogram(list):
             for word in word_list:
                 self.add_count(word)
 
+    def search(self, word):
+        """Return index of entry with given word if found in this histogram, otherwise return None"""
+        for index, entry in enumerate(self):
+            if entry[0] == word:
+                return entry, index
+        return None, 0
+
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
-        # TODO: Increase word frequency by count
+        word = str(word)
+        found_word_count, index = self.search(word)
+        if found_word_count:
+            new_word_count = (found_word_count[1] + count)
+            self[index] = [word, new_word_count]
+        else:
+            self.append([word, count])
+            self.types += 1
+        self.tokens += count
+
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
-        # TODO: Retrieve word frequency count
+        found_word_count, _ = self.search(word)
+        return 0 if not found_word_count else found_word_count[1]
+
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
-        # TODO: Check if word is in this histogram
+        found_word, _ = self.search(word)
+        return found_word is not None
 
     def index_of(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
-        # TODO: Implement linear search to find index of entry with target word
+        found_word_count, index = self.search(target)
+        return index if found_word_count else None
 
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
         each word's probability of being chosen by its observed frequency."""
-        # TODO: Randomly choose a word based on its frequency in this histogram
+        distance = 0
+        dart = random.uniform(0, self.tokens)
+        for word_and_count in self:
+            distance += word_and_count[1]
+            if distance >= dart:
+                return word_and_count[0]
 
 
 def print_histogram(word_list):
