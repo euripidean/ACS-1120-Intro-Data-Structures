@@ -1,0 +1,1 @@
+- Write separate functions for reading and cleaning up text.
