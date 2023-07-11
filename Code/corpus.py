@@ -6,7 +6,7 @@ class Corpus:
         self.corpus = self.clean_text()
 
     def read_file(self):
-        with open("./Data/corpus.txt") as f:
+        with open("./data/corpus.txt") as f:
             corpus = f.read()
         return corpus
 
